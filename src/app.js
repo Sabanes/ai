@@ -70,7 +70,7 @@ async function startConversation() {
             },
             onError: (error) => {
                 console.error('Conversation error:', error);
-                alert('An error occurred during the conversation.');
+                alert('Obrigado por usar o Assistente Dia!');
             },
             onModeChange: (mode) => {
                 console.log('Mode changed:', mode); // Debug log to see exact mode object

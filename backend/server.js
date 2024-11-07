@@ -13,11 +13,11 @@ app.use(express.static(path.join(__dirname, '../dist')));
 app.get('/api/signed-url', async (req, res) => {
     try {
         const response = await fetch(
-            `https://api.elevenlabs.io/v1/convai/conversation/get_signed_url?agent_id=${AGENT_ID}`,
+            `https://api.elevenlabs.io/v1/convai/conversation/get_signed_url?agent_id=lFNQROpouyoYlOVIS2kg`,
             {
                 method: 'GET',
                 headers: {
-                    'xi-api-key': process.env.XI_API_KEY,
+                    'xi-api-key': "sk_acafbeb71576c3a0b57b5ae591e0813bbeee436c3e895f54",
                 }
             }
         );
