@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
 
+
 dotenv.config();
 
 const app = express();
@@ -17,7 +18,7 @@ app.get('/api/signed-url', async (req, res) => {
             {
                 method: 'GET',
                 headers: {
-                    'xi-api-key': "sk_acafbeb71576c3a0b57b5ae591e0813bbeee436c3e895f54",
+                    'xi-api-key': process.env.XI_API_KEY,
                 }
             }
         );
