@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistante Dia</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="app-title">Assistente Dia</h1>
+        <div class="status-container">
+            <div id="connectionStatus" class="status-badge">Disconnected</div>
+            <div id="speakingStatus" class="status-badge speaking-status">Agent Silent</div>
+        </div>
+        <div class="response-area" id="responseArea"></div>
+        <div class="controls">
+            <button id="startButton" class="button start-button">Começar Conversa</button>
+            <button id="endButton" class="button end-button" style="display: none;">Terminar Conversa</button>
+        </div> 
+    </div>
+    <script src="/bundle.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+        const startButton = document.getElementById('startButton');
+        const endButton = document.getElementById('endButton');
+        const responseArea = document.getElementById('responseArea');
+        const connectionStatus = document.getElementById('connectionStatus');
+        const speakingStatus = document.getElementById('speakingStatus');
+    
+        startButton.addEventListener('click', () => {
+            startButton.style.display = 'none';
+            endButton.style.display = 'block';
+            connectionStatus.textContent = 'Connected';
+            connectionStatus.style.backgroundColor = '#d4edda';
+            connectionStatus.style.color = '#155724';
+            addResponse('Conversation started. How can I assist you today?');
+        });
+    
+        endButton.addEventListener('click', () => {
+            endButton.style.display = 'none';
+            startButton.style.display = 'block';
+            connectionStatus.textContent = 'Disconnected';
+            connectionStatus.style.backgroundColor = '#f1f1f1';
+            connectionStatus.style.color = '#333';
+            speakingStatus.textContent = 'Agent Silent';
+            speakingStatus.style.backgroundColor = '#e6f7ff';
+            speakingStatus.style.color = '#0056b3';
+            addResponse('Conversation ended. Thank you for using our service!');
+        });
+    
+        function addResponse(text) {
+            const response = document.createElement('p');
+            response.textContent = text;
+            response.style.opacity = '0';
+            response.style.transform = 'translateY(20px)';
+            response.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            responseArea.appendChild(response);
+    
+            setTimeout(() => {
+                response.style.opacity = '1';
+                response.style.transform = 'translateY(0)';
+            }, 100);
+    
+            responseArea.scrollTop = responseArea.scrollHeight;
+        }
+    });</script>
+</body>
+</html>
